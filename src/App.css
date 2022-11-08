@@ -12,6 +12,22 @@ body {
   color: white;
 }
 
+.main-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.pomodoro-title {
+  text-align: center;
+  font-size: 45px;
+}
+
+.pomodoro-logo {
+  width: 150px;
+}
+
 .container {
   padding: 30px 0;
   width: 340px;
