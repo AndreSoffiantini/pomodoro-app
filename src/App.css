@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  background-color: #d42e36;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  padding: 30px 0;
+  width: 340px;
+  margin: 60px auto;
+  text-align: center;
+  background-color: #fd6a6e;
+  border-radius: 20px;
+  box-shadow: 12px 12px 12px rgba(1, 3, 2, 0.4);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.statusField {
+  background-color: #d42e36;
+  border-radius: 8px;
+  width: 75%;
+  margin: auto;
+}
+
+.statusText {
+  font-size: 38px;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+.timer {
+  font-size: 90px;
+  font-weight: 800;
+  margin: 40px auto;
+}
+
+label {
+  text-align: center;
+  display: block;
+  font-size: 18px;
+  margin: 20px;
+  color: white;
+}
+
+.inputFields {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  min-width: 95px;
+  height: 40px;
+  padding-left: 15px;
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  color: #fff;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  margin-right: 16px;
+  height: 30px;
+  width: 14px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button:hover,
+input[type="number"]::-webkit-inner-spin-button:active {
+  opacity: 1;
+  border: none;
+}
+
+.controller {
+  background-color: transparent;
+  color: white;
+  border: 0;
+  width: 70px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  transition: ease-in-out 0.2s;
+}
+
+.controller:hover {
+  color: #df7073;
 }
