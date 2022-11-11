@@ -1,8 +1,9 @@
 import React from "react";
-import PlayButton from "./PlayButton";
-import PauseButton from "./PauseButton";
+/* import PlayButton from "./PlayButton";
+import PauseButton from "./PauseButton"; */
 import ResetButton from "./ResetButton";
 import { useState, useEffect } from "react";
+import PlayPauseButton from "./PlayPauseButton";
 
 const TimerSection = () => {
   const [sessionTimer, setSessionTimer] = useState(25);
@@ -26,22 +27,20 @@ const TimerSection = () => {
       setStatus(changedStatus);
       setSecondsLeft(changedSeconds);
     }
-    setSecondsLeft(secondsLeft);
+    //setSecondsLeft(secondsLeft);
 
-    if (!isPaused) {
-      const interval = setInterval(() => {
+    if (!isPaused && secondsLeft === 0) {
+      /* const interval = setInterval(() => {
         setSecondsLeft((secondsLeft) => secondsLeft - 1);
-      }, 1000);
+      }, 1000); */
 
-      if (secondsLeft === 0) {
+      switchStatus();
+
+      /* if (secondsLeft === 0) {
         switchStatus();
-        clearInterval(interval);
-        setIsPaused(false);
-      }
-
-      return () => clearInterval(interval);
+      } */
     }
-  }, [sessionTimer, breakTimer, isPaused, secondsLeft, status]);
+  });
 
   const handleSessionChange = (e) => {
     setSessionTimer(e.target.value);
@@ -52,9 +51,9 @@ const TimerSection = () => {
     setBreakTimer(e.target.value);
   };
 
-  const handlePause = () => {
+  /* const handlePause = () => {
     setIsPaused(!isPaused);
-  };
+  }; */
 
   const handleReset = () => {
     setIsPaused(true);
@@ -99,11 +98,17 @@ const TimerSection = () => {
       </div>
 
       <div style={{ margin: "25px" }}>
-        {isPaused ? (
+        <PlayPauseButton
+          isPaused={isPaused}
+          setIsPaused={setIsPaused}
+          secondsLeft={secondsLeft}
+          setSecondsLeft={setSecondsLeft}
+        />
+        {/* {isPaused ? (
           <PlayButton onClick={handlePause} />
         ) : (
           <PauseButton onClick={handlePause} />
-        )}
+        )} */}
         <ResetButton onClick={handleReset} />
       </div>
     </div>
