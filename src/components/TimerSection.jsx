@@ -51,9 +51,9 @@ const TimerSection = () => {
     setBreakTimer(e.target.value);
   };
 
-  /* const handlePause = () => {
+  const handlePause = () => {
     setIsPaused(!isPaused);
-  }; */
+  };
 
   const handleReset = () => {
     setIsPaused(true);
@@ -99,6 +99,7 @@ const TimerSection = () => {
 
       <div style={{ margin: "25px" }}>
         <PlayPauseButton
+          onClick={handlePause}
           isPaused={isPaused}
           setIsPaused={setIsPaused}
           secondsLeft={secondsLeft}
