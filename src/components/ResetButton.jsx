@@ -2,7 +2,7 @@ import React from "react";
 
 const ResetButton = (props) => {
   return (
-    <button {...props} className="controller">
+    <button className="controller" onClick={props.handleReset}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

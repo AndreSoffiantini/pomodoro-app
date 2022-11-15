@@ -1,9 +1,8 @@
 import React from "react";
 /* import PlayButton from "./PlayButton";
 import PauseButton from "./PauseButton"; */
-import ResetButton from "./ResetButton";
+import ButtonsContainer from "./ButtonsContainer";
 import { useState, useEffect } from "react";
-import PlayPauseButton from "./PlayPauseButton";
 
 const TimerSection = () => {
   const [sessionTimer, setSessionTimer] = useState(25);
@@ -29,7 +28,7 @@ const TimerSection = () => {
     }
     //setSecondsLeft(secondsLeft);
 
-    if (!isPaused && secondsLeft === 0) {
+    if (secondsLeft === 0) {
       /* const interval = setInterval(() => {
         setSecondsLeft((secondsLeft) => secondsLeft - 1);
       }, 1000); */
@@ -40,7 +39,7 @@ const TimerSection = () => {
         switchStatus();
       } */
     }
-  });
+  }, [secondsLeft, breakTimer, sessionTimer, status]);
 
   const handleSessionChange = (e) => {
     setSessionTimer(e.target.value);
@@ -98,19 +97,14 @@ const TimerSection = () => {
       </div>
 
       <div style={{ margin: "25px" }}>
-        <PlayPauseButton
-          onClick={handlePause}
+        <ButtonsContainer
+          handlePause={handlePause}
+          handleReset={handleReset}
           isPaused={isPaused}
           setIsPaused={setIsPaused}
           secondsLeft={secondsLeft}
           setSecondsLeft={setSecondsLeft}
         />
-        {/* {isPaused ? (
-          <PlayButton onClick={handlePause} />
-        ) : (
-          <PauseButton onClick={handlePause} />
-        )} */}
-        <ResetButton onClick={handleReset} />
       </div>
     </div>
   );
