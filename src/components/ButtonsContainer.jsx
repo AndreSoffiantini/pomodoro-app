@@ -28,7 +28,6 @@ const ButtonsContainer = (props) => {
   return (
     <>
       <PlayPauseButton handleClick={handleClick} intervalId={intervalId} />
-
       <ResetButton handleReset={handleResetInterval} />
     </>
   );

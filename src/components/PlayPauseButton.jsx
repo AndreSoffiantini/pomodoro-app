@@ -1,10 +1,6 @@
 import { React } from "react";
 
 const PlayPauseButton = (props) => {
-  /*  useEffect(() => {
-    return () => clearInterval(intervalId);
-  }); */
-
   return (
     <button className="controller" onClick={props.handleClick}>
       <svg

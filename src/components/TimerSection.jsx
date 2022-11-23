@@ -1,7 +1,7 @@
 import React from "react";
-/* import PlayButton from "./PlayButton";
-import PauseButton from "./PauseButton"; */
 import ButtonsContainer from "./ButtonsContainer";
+import InputField from "./InputField";
+import Timer from "./Timer";
 import { useState, useEffect } from "react";
 
 const TimerSection = () => {
@@ -26,28 +26,31 @@ const TimerSection = () => {
       setStatus(changedStatus);
       setSecondsLeft(changedSeconds);
     }
-    //setSecondsLeft(secondsLeft);
 
-    if (secondsLeft === 0) {
-      /* const interval = setInterval(() => {
-        setSecondsLeft((secondsLeft) => secondsLeft - 1);
-      }, 1000); */
-
+    if (!isPaused && secondsLeft === 0) {
       switchStatus();
-
-      /* if (secondsLeft === 0) {
-        switchStatus();
-      } */
     }
-  }, [secondsLeft, breakTimer, sessionTimer, status]);
+  }, [secondsLeft, breakTimer, sessionTimer, status, isPaused]);
 
   const handleSessionChange = (e) => {
-    setSessionTimer(e.target.value);
-    setSecondsLeft(e.target.value * 60);
+    if (e.target.value) {
+      if (isPaused && e.target.value === "0") {
+        return;
+      } else {
+        setSessionTimer(e.target.value);
+        setSecondsLeft(e.target.value * 60);
+      }
+    }
   };
 
   const handleBreakChange = (e) => {
-    setBreakTimer(e.target.value);
+    if (e.target.value) {
+      if (isPaused && e.target.value === "0") {
+        return;
+      } else {
+        setBreakTimer(e.target.value);
+      }
+    }
   };
 
   const handlePause = () => {
@@ -67,42 +70,34 @@ const TimerSection = () => {
           {status === "session" ? "Session!" : "Break!"}
         </h2>
       </div>
-      <div className="timer">{minutes + ":" + seconds}</div>
+
+      <Timer minutes={minutes} seconds={seconds} />
 
       <div className="inputFields">
-        <div className="inputField">
-          <label>Session length</label>
-          <input
-            type="number"
-            name="session"
-            id="session"
-            min="1"
-            max="120"
-            value={sessionTimer}
-            onChange={handleSessionChange}
-          ></input>
-        </div>
-        <div className="inputField">
-          <label>Break length</label>
-          <input
-            type="number"
-            name="breakTimer"
-            id="breakTimer"
-            min="1"
-            max="30"
-            value={breakTimer}
-            onChange={handleBreakChange}
-          ></input>
-        </div>
+        <InputField
+          id="session"
+          labelText="Session length"
+          min="1"
+          max="120"
+          value={sessionTimer}
+          isPaused={isPaused}
+          handleChange={handleSessionChange}
+        />
+        <InputField
+          id="breakTimer"
+          labelText="Break length"
+          min="1"
+          max="30"
+          value={breakTimer}
+          isPaused={isPaused}
+          handleChange={handleBreakChange}
+        />
       </div>
 
       <div style={{ margin: "25px" }}>
         <ButtonsContainer
           handlePause={handlePause}
           handleReset={handleReset}
-          isPaused={isPaused}
-          setIsPaused={setIsPaused}
-          secondsLeft={secondsLeft}
           setSecondsLeft={setSecondsLeft}
         />
       </div>

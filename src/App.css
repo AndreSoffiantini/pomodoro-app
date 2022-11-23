@@ -55,6 +55,7 @@ body {
   font-size: 90px;
   font-weight: 800;
   margin: 40px auto;
+  display: block;
 }
 
 label {
@@ -71,9 +72,10 @@ label {
 }
 
 input {
-  min-width: 95px;
+  width: 80%;
   height: 40px;
-  padding-left: 15px;
+  text-align: center;
+  /* padding-left: 15px; */
   border: none;
   background: transparent;
   font-size: 22px;
@@ -106,5 +108,5 @@ input[type="number"]::-webkit-inner-spin-button:active {
 }
 
 .controller:hover {
-  color: #df7073;
+  color: #783937ff;
 }
